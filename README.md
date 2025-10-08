@@ -56,7 +56,7 @@ Portfolio web moderno y profesional que demuestra capacidades de desarrollo con 
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/LanzaWebAR.git
+git clone https://github.com/Scribax/LanzaWebAR.git
 
 # Navegar al directorio
 cd LanzaWebAR
