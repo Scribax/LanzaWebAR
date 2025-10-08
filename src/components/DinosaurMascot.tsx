@@ -1,0 +1,108 @@
+import React from 'react'
+
+interface DinosaurMascotProps {
+  className?: string
+  size?: number
+}
+
+const DinosaurMascot: React.FC<DinosaurMascotProps> = ({ 
+  className = '', 
+  size = 48 
+}) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {/* Definir gradientes */}
+      <defs>
+        <linearGradient id="dinoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#22c55e" />
+          <stop offset="50%" stopColor="#06b6d4" />
+          <stop offset="100%" stopColor="#3b82f6" />
+        </linearGradient>
+        <linearGradient id="bellyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#86efac" />
+          <stop offset="100%" stopColor="#7dd3fc" />
+        </linearGradient>
+        <radialGradient id="eyeGradient" cx="50%" cy="30%" r="70%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#e5e7eb" />
+        </radialGradient>
+        <linearGradient id="rocketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#f59e0b" />
+          <stop offset="50%" stopColor="#ef4444" />
+          <stop offset="100%" stopColor="#dc2626" />
+        </linearGradient>
+      </defs>
+
+      {/* Cuerpo del dinosaurio */}
+      <ellipse cx="50" cy="60" rx="25" ry="20" fill="url(#dinoGradient)" />
+      
+      {/* Barriga más clara */}
+      <ellipse cx="50" cy="65" rx="18" ry="14" fill="url(#bellyGradient)" opacity="0.7" />
+      
+      {/* Cabeza */}
+      <ellipse cx="50" cy="35" rx="20" ry="18" fill="url(#dinoGradient)" />
+      
+      {/* Hocico */}
+      <ellipse cx="50" cy="42" rx="12" ry="8" fill="url(#dinoGradient)" />
+      <ellipse cx="50" cy="45" rx="8" ry="5" fill="url(#bellyGradient)" opacity="0.8" />
+      
+      {/* Ojos grandes y adorables */}
+      <circle cx="43" cy="30" r="6" fill="url(#eyeGradient)" />
+      <circle cx="57" cy="30" r="6" fill="url(#eyeGradient)" />
+      
+      {/* Pupilas */}
+      <circle cx="44" cy="31" r="3" fill="#1f2937" />
+      <circle cx="56" cy="31" r="3" fill="#1f2937" />
+      
+      {/* Brillos en los ojos */}
+      <circle cx="45" cy="29" r="1.5" fill="#ffffff" />
+      <circle cx="57" cy="29" r="1.5" fill="#ffffff" />
+      
+      {/* Patitas pequeñas */}
+      <ellipse cx="38" cy="75" rx="6" ry="8" fill="url(#dinoGradient)" />
+      <ellipse cx="62" cy="75" rx="6" ry="8" fill="url(#dinoGradient)" />
+      
+      {/* Brazos pequeños */}
+      <ellipse cx="28" cy="55" rx="4" ry="10" fill="url(#dinoGradient)" />
+      <ellipse cx="72" cy="55" rx="4" ry="10" fill="url(#dinoGradient)" />
+      
+      {/* Cola */}
+      <ellipse cx="75" cy="58" rx="8" ry="15" fill="url(#dinoGradient)" transform="rotate(15 75 58)" />
+      
+      {/* Cresta en la cabeza */}
+      <path d="M 40 20 Q 50 15 60 20 Q 55 25 50 23 Q 45 25 40 20" fill="url(#dinoGradient)" />
+      
+      {/* Rocket pequeño que sostiene */}
+      <g transform="translate(20, 25) scale(0.8)">
+        {/* Cuerpo del cohete */}
+        <ellipse cx="15" cy="25" rx="4" ry="12" fill="url(#rocketGradient)" />
+        
+        {/* Punta del cohete */}
+        <path d="M 15 10 L 11 15 L 19 15 Z" fill="#fbbf24" />
+        
+        {/* Ventana del cohete */}
+        <circle cx="15" cy="20" r="3" fill="#60a5fa" opacity="0.8" />
+        <circle cx="15" cy="20" r="2" fill="#dbeafe" />
+        
+        {/* Llamas del cohete */}
+        <path d="M 11 35 Q 15 40 19 35 Q 15 38 11 35" fill="#f97316" opacity="0.9" />
+        <path d="M 13 37 Q 15 40 17 37 Q 15 39 13 37" fill="#fbbf24" opacity="0.8" />
+      </g>
+      
+      {/* Pequeñas mejillas rosadas */}
+      <circle cx="35" cy="38" r="3" fill="#fca5a5" opacity="0.6" />
+      <circle cx="65" cy="38" r="3" fill="#fca5a5" opacity="0.6" />
+      
+      {/* Sonrisa */}
+      <path d="M 45 47 Q 50 52 55 47" stroke="#1f2937" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+export default DinosaurMascot
