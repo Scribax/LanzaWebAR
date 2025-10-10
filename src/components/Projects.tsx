@@ -22,6 +22,12 @@ const Projects: React.FC = () => {
       img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop',
       desc: 'Propuesta clara, prueba social, precios y formulario de captura.',
     },
+    {
+      title: 'RealEstate Pro',
+      href: '/projects/real-estate-pro',
+      img: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1200&auto=format&fit=crop',
+      desc: 'Plataforma inmobiliaria con búsqueda avanzada, filtros y favoritos.',
+    },
   ]
 
   return (
@@ -31,9 +37,9 @@ const Projects: React.FC = () => {
           <h2 className="h2">Proyectos</h2>
         </Reveal>
         <Reveal delay={120}>
-          <p className="p mt-2 max-w-2xl">Demostramos nuestras capacidades con estos proyectos interactivos.</p>
+          <p className="p mt-2 max-w-2xl">Demostramos nuestras capacidades con estos 4 proyectos interactivos y funcionales.</p>
         </Reveal>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((p, i) => (
             <Reveal key={p.title} delay={120 + i * 100}>
 <div className="rounded-xl p-[1px] bg-[conic-gradient(var(--accent-from),var(--accent-via),var(--accent-to),var(--accent-from))]">

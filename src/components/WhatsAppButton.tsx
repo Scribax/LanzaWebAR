@@ -5,7 +5,7 @@ const WhatsAppButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false)
   
   const phoneNumber = '+5491156177616' // Formato internacional para WhatsApp
-  const message = '¡Hola! Nos interesa conocer más sobre sus servicios de desarrollo web.'
+  const message = '¡Hola Franco! Vi lanzawebar.com y me interesa la web completa por $15k. ¿Podemos hablar?'
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
   useEffect(() => {

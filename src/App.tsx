@@ -14,6 +14,7 @@ import SpecialOffer from './components/SpecialOffer'
 import EcommerceMinimal from './pages/projects/EcommerceMinimal'
 import DashboardAnalytics from './pages/projects/DashboardAnalytics'
 import LandingSaas from './pages/projects/LandingSaas'
+import RealEstatePro from './pages/projects/RealEstatePro'
 import ProductDetail from './pages/projects/ecommerce/ProductDetail'
 import NotFound from './pages/NotFound'
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/projects/ecommerce-minimal" element={<EcommerceMinimal />} />
         <Route path="/projects/dashboard-analytics" element={<DashboardAnalytics />} />
         <Route path="/projects/landing-saas" element={<LandingSaas />} />
+        <Route path="/projects/real-estate-pro" element={<RealEstatePro />} />
         <Route path="/projects/ecommerce-minimal/:id" element={<ProductDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
