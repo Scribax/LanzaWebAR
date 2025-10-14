@@ -9,14 +9,27 @@
     "start": "node dist/index.js"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
+    "@types/ftp": "^0.3.36",
     "@types/node": "^24.7.0",
+    "@types/nodemailer": "^7.0.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "tsx": "^4.20.6"
   },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node-fetch": "^2.6.13",
+    "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.3",
-    "nodemailer": "^7.0.9"
+    "ftp": "^0.3.10",
+    "jsonwebtoken": "^9.0.2",
+    "mercadopago": "^2.9.0",
+    "node-fetch": "^3.3.2",
+    "nodemailer": "^7.0.9",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
   }
 }

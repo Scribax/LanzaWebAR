@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Reveal from './Reveal'
 
 const Hero: React.FC = () => {
@@ -21,8 +22,9 @@ const Hero: React.FC = () => {
           </Reveal>
           <Reveal delay={300}>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#projects" className="btn-gradient"><span>Ver proyectos</span></a>
-              <a href="#contact" className="inline-flex items-center rounded-md border border-neutral-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-neutral-900 transition-colors">Contactar</a>
+              <a href="#contact" className="btn-gradient"><span>Sitio completo</span></a>
+              <Link to="/hosting" className="inline-flex items-center rounded-md border border-neutral-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-neutral-900 transition-colors">Solo Hosting</Link>
+              <a href="#projects" className="inline-flex items-center rounded-md border border-neutral-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-neutral-900 transition-colors">Ver proyectos</a>
             </div>
           </Reveal>
         </div>

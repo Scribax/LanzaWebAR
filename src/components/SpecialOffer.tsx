@@ -53,7 +53,7 @@ const SpecialOffer: React.FC = () => {
                     <span className="text-lg text-neutral-400 font-medium">ARS</span>
                   </div>
                   <div className="text-neutral-300 text-sm">Precio único • Setup completo</div>
-                  <div className="text-xs text-neutral-400 mt-1">*Hosting: 1er mes gratis, luego $600/mes sin IVA</div>
+                  <div className="text-xs text-neutral-400 mt-1">*Hosting: 1er mes gratis, luego AR$ 2000/mes</div>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@ const SpecialOffer: React.FC = () => {
                   </svg>
                 </div>
                 <h3 className="font-semibold text-white mb-2">Hosting Premium</h3>
-                <p className="text-sm text-neutral-400">1er mes gratis • $600/mes sin IVA</p>
+                <p className="text-sm text-neutral-400">1er mes gratis • AR$ 2000/mes</p>
               </div>
 
               <div className="bg-neutral-900/60 border border-neutral-700 rounded-lg p-6 backdrop-blur-sm hover:border-blue-500/50 transition-colors">

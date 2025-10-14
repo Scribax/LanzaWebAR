@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Bienvenido a tu Hosting! - LanzaWeb AR</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .welcome-message h2 {
+            color: #2d3748;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .welcome-message p {
+            color: #718096;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .info-cards {
+            display: grid;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .info-card {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .info-card h3 {
+            color: #2d3748;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .info-card p {
+            color: #4a5568;
+            line-height: 1.5;
+        }
+        
+        .cta-section {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .cta-section h3 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 24px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 25px 30px;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: #90cdf4;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #63b3ed;
+        }
+        
+        .icon {
+            display: inline-block;
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .btn-primary, .btn-secondary {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 ¡Tu Hosting Está Listo!</h1>
+            <p>Bienvenido a LanzaWeb AR</p>
+        </div>
+        
+        <div class="content">
+            <div class="welcome-message">
+                <h2>¡Felicitaciones!</h2>
+                <p>Tu cuenta de hosting ha sido creada exitosamente. Tu sitio web ya está online y listo para recibir contenido.</p>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3><span class="icon">⚡</span> Tu Sitio Está Activo</h3>
+                    <p>Tu dominio ya está configurado y funcionando con SSL automático para máxima seguridad.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><span class="icon">🎨</span> Comienza a Personalizar</h3>
+                    <p>Sube tus archivos, instala WordPress o crea tu sitio desde cero usando cPanel.</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><span class="icon">📧</span> Email Profesional</h3>
+                    <p>Crea cuentas de email profesionales como info@tudominio.com desde tu panel de control.</p>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h3>¿Listo para comenzar?</h3>
+                <p>Accede a tu panel de control para gestionar tu hosting:</p>
+                
+                <a href="https://blue106.dnsmisitio.net:2083" class="btn-primary" target="_blank">
+                    🖥️ Acceder a cPanel
+                </a>
+                
+                <a href="https://lanzawebar.com/soporte" class="btn-secondary" target="_blank">
+                    📞 Soporte Técnico
+                </a>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px;">
+                <h4 style="color: #856404; margin-bottom: 10px;">📝 Próximos Pasos:</h4>
+                <ol style="color: #856404; margin-left: 20px; line-height: 1.6;">
+                    <li>Accede a tu cPanel con las credenciales enviadas por email</li>
+                    <li>Sube tu contenido usando el Administrador de Archivos</li>
+                    <li>Instala WordPress con un solo clic desde Softaculous</li>
+                    <li>Configura tus cuentas de email profesionales</li>
+                    <li>¡Comparte tu nuevo sitio web con el mundo!</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>
+                <strong>LanzaWeb AR</strong> - Hosting Profesional Argentino<br>
+                📧 <a href="mailto:soporte@lanzawebar.com">soporte@lanzawebar.com</a> | 
+                🌐 <a href="https://lanzawebar.com" target="_blank">lanzawebar.com</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Animación simple al cargar la página
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.info-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.animation = `fadeInUp 0.6s ease-out forwards`;
+                }, index * 150);
+            });
+        });
+    </script>
+</body>
+</html>

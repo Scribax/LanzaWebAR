@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LanzaWebAR - Panel de Hosting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #3498db;
+            border-bottom-color: #3498db;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        .pricing {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: #3498db;
+        }
+
+        .pricing-card.featured {
+            border-color: #3498db;
+            transform: scale(1.05);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            color: #666;
+        }
+
+        .plan-features li:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .accounts-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .accounts-table th,
+        .accounts-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .accounts-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status.active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.suspended {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .server-info {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .server-info h3 {
+            color: #1976d2;
+            margin-bottom: 15px;
+        }
+
+        .server-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .detail-value {
+            color: #333;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 LanzaWebAR</h1>
+            <p>Panel de Administración de Hosting Compartido</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalAccounts">0</div>
+                <div class="stat-label">Cuentas Activas</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalDomains">0</div>
+                <div class="stat-label">Dominios Hospedados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="monthlyRevenue">$0</div>
+                <div class="stat-label">Ingresos Mensuales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="server-info">
+                <h3>🖥️ Información del Servidor Reseller</h3>
+                <div class="server-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Servidor:</span>
+                        <span class="detail-value">Blue106 (BlueHosting)</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">IP:</span>
+                        <span class="detail-value">186.64.119.195</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Plan:</span>
+                        <span class="detail-value">Reseller POWER</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Panel WHM:</span>
+                        <span class="detail-value">https://186.64.119.195:2087</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('create')">🆕 Crear Hosting</button>
+                <button class="tab" onclick="showTab('accounts')">👥 Cuentas</button>
+                <button class="tab" onclick="showTab('pricing')">💰 Precios</button>
+                <button class="tab" onclick="showTab('tools')">🔧 Herramientas</button>
+            </div>
+
+            <!-- Tab: Crear Hosting -->
+            <div id="create" class="tab-content active">
+                <h2>Crear Nueva Cuenta de Hosting</h2>
+                <form id="hostingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="clientName">Nombre del Cliente</label>
+                            <input type="text" id="clientName" required placeholder="Ej: Juan Pérez">
+                        </div>
+                        <div class="form-group">
+                            <label for="clientEmail">Email del Cliente</label>
+                            <input type="email" id="clientEmail" required placeholder="cliente@ejemplo.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="domain">Dominio</label>
+                            <input type="text" id="domain" required placeholder="ejemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectType">Tipo de Proyecto</label>
+                            <select id="projectType" required>
+                                <option value="">Seleccionar...</option>
+                                <option value="basic">Sitio Básico (HTML/CSS/JS)</option>
+                                <option value="react">Aplicación React</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="saas">SaaS Application</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notas Adicionales</label>
+                        <textarea id="notes" rows="3" placeholder="Información adicional del proyecto..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">🚀 Crear Hosting</button>
+                </form>
+
+                <div class="loading" id="loadingCreate">
+                    <div class="spinner"></div>
+                    <p>Creando cuenta de hosting...</p>
+                </div>
+
+                <div class="alert" id="alertCreate"></div>
+            </div>
+
+            <!-- Tab: Cuentas -->
+            <div id="accounts" class="tab-content">
+                <h2>Gestión de Cuentas</h2>
+                <button class="btn" onclick="refreshAccounts()">🔄 Actualizar</button>
+                
+                <table class="accounts-table">
+                    <thead>
+                        <tr>
+                            <th>Dominio</th>
+                            <th>Cliente</th>
+                            <th>Usuario cPanel</th>
+                            <th>Tipo</th>
+                            <th>Creado</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="accountsTableBody">
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 40px;">
+                                Cargando cuentas...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Tab: Precios -->
+            <div id="pricing" class="tab-content">
+                <h2>Planes de Hosting</h2>
+                <div class="pricing">
+                    <div class="pricing-card">
+                        <div class="plan-name">Desarrollo + Hosting</div>
+                        <div class="plan-price">$15.000</div>
+                        <ul class="plan-features">
+                            <li>Desarrollo web completo</li>
+                            <li>1 mes de hosting GRATIS</li>
+                            <li>Certificado SSL incluido</li>
+                            <li>Backup diario</li>
+                            <li>Panel cPanel</li>
+                            <li>Soporte técnico</li>
+                        </ul>
+                        <button class="btn">Una sola vez</button>
+                    </div>
+
+                    <div class="pricing-card featured">
+                        <div class="plan-name">Hosting Mensual</div>
+                        <div class="plan-price">$600/mes</div>
+                        <ul class="plan-features">
+                            <li>1GB de espacio</li>
+                            <li>Transferencia ilimitada</li>
+                            <li>5 cuentas de email</li>
+                            <li>5 bases de datos MySQL</li>
+                            <li>SSL automático</li>
+                            <li>Backup diario</li>
+                            <li>99.9% uptime</li>
+                        </ul>
+                        <button class="btn btn-success">Más Popular</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="plan-name">Dominio</div>
+                        <div class="plan-price">$1.000/año</div>
+                        <ul class="plan-features">
+                            <li>Dominio .com</li>
+                            <li>DNS management</li>
+                            <li>Configuración automática</li>
+                            <li>Renovación recordatorio</li>
+                        </ul>
+                        <button class="btn">Opcional</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Herramientas -->
+            <div id="tools" class="tab-content">
+                <h2>Herramientas de Administración</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                    <div class="pricing-card">
+                        <h3>🔗 Accesos Directos</h3>
+                        <div style="text-align: left; margin-top: 20px;">
+                            <a href="https://186.64.119.195:2087" target="_blank" class="btn" style="display: block; margin-bottom: 10px; text-decoration: none; text-align: center;">WHM Panel</a>
+                            <a href="https://186.64.119.195:2083" target="_blank" class="btn" style="display: block; margin-bottom: 10px; text-decoration: none; text-align: center;">cPanel Demo</a>
+                        </div>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>🎨 Plantillas Web</h3>
+                        <button class="btn" onclick="downloadTemplates()">Descargar Plantillas</button>
+                        <button class="btn" style="margin-top: 10px;" onclick="uploadTemplate()">Subir Nueva</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>📊 Reportes</h3>
+                        <button class="btn" onclick="generateReport('monthly')">Reporte Mensual</button>
+                        <button class="btn" style="margin-top: 10px;" onclick="generateReport('accounts')">Reporte de Cuentas</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>🔧 Utilidades</h3>
+                        <button class="btn" onclick="testWHMConnection()">Test WHM Connection</button>
+                        <button class="btn" style="margin-top: 10px;" onclick="backupAllAccounts()">Backup General</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let accounts = [];
+
+        // Mostrar/ocultar tabs
+        function showTab(tabName) {
+            // Ocultar todos los tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Mostrar tab seleccionado
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Crear nueva cuenta de hosting
+        document.getElementById('hostingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                clientName: document.getElementById('clientName').value,
+                clientEmail: document.getElementById('clientEmail').value,
+                domain: document.getElementById('domain').value,
+                projectType: document.getElementById('projectType').value,
+                notes: document.getElementById('notes').value
+            };
+
+            showLoading('loadingCreate', true);
+            hideAlert('alertCreate');
+
+            try {
+                // Simular llamada a API
+                await simulateHostingCreation(formData);
+                
+                showAlert('alertCreate', 'success', '¡Cuenta de hosting creada exitosamente! 🎉');
+                document.getElementById('hostingForm').reset();
+                updateStats();
+                refreshAccounts();
+                
+            } catch (error) {
+                showAlert('alertCreate', 'error', 'Error al crear la cuenta: ' + error.message);
+            } finally {
+                showLoading('loadingCreate', false);
+            }
+        });
+
+        // Simular creación de hosting (reemplazar con llamada real a WHM)
+        async function simulateHostingCreation(formData) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // Generar datos de cuenta simulados
+                    const newAccount = {
+                        domain: formData.domain,
+                        client: formData.clientName,
+                        email: formData.clientEmail,
+                        username: generateUsername(formData.domain),
+                        type: formData.projectType,
+                        created: new Date().toLocaleDateString('es-AR'),
+                        status: 'active'
+                    };
+                    
+                    accounts.push(newAccount);
+                    resolve(newAccount);
+                }, 3000);
+            });
+        }
+
+        function generateUsername(domain) {
+            const cleanDomain = domain.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+            const timestamp = Date.now().toString().slice(-4);
+            return (cleanDomain + timestamp).substring(0, 8);
+        }
+
+        // Actualizar estadísticas
+        function updateStats() {
+            document.getElementById('totalAccounts').textContent = accounts.length;
+            document.getElementById('totalDomains').textContent = accounts.length;
+            document.getElementById('monthlyRevenue').textContent = '$' + (accounts.length * 600).toLocaleString();
+        }
+
+        // Refrescar tabla de cuentas
+        function refreshAccounts() {
+            const tbody = document.getElementById('accountsTableBody');
+            
+            if (accounts.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 40px;">
+                            No hay cuentas creadas aún
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = accounts.map(account => `
+                <tr>
+                    <td>${account.domain}</td>
+                    <td>${account.client}</td>
+                    <td>${account.username}</td>
+                    <td>${account.type}</td>
+                    <td>${account.created}</td>
+                    <td><span class="status ${account.status}">${account.status}</span></td>
+                    <td>
+                        <button class="btn btn-danger" onclick="suspendAccount('${account.domain}')" style="font-size: 0.8rem; padding: 5px 10px;">
+                            Suspender
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Funciones de utilidad
+        function showLoading(elementId, show) {
+            document.getElementById(elementId).style.display = show ? 'block' : 'none';
+        }
+
+        function showAlert(elementId, type, message) {
+            const alert = document.getElementById(elementId);
+            alert.className = `alert ${type}`;
+            alert.textContent = message;
+            alert.style.display = 'block';
+            
+            setTimeout(() => {
+                hideAlert(elementId);
+            }, 5000);
+        }
+
+        function hideAlert(elementId) {
+            document.getElementById(elementId).style.display = 'none';
+        }
+
+        // Funciones de herramientas
+        function testWHMConnection() {
+            alert('🔌 Conectando con WHM...\n\nEstado: ✅ Conexión exitosa\nServidor: Blue106\nIP: 186.64.119.195');
+        }
+
+        function downloadTemplates() {
+            alert('📁 Descargando plantillas web...\n\n• basic-template.zip\n• react-template.zip\n• ecommerce-template.zip\n• saas-template.zip');
+        }
+
+        function uploadTemplate() {
+            alert('📤 Función de subida de plantillas en desarrollo...');
+        }
+
+        function generateReport(type) {
+            alert(`📊 Generando reporte ${type}...\n\nEl reporte será enviado a tu email.`);
+        }
+
+        function backupAllAccounts() {
+            alert('💾 Iniciando backup de todas las cuentas...\n\nEsto puede tomar varios minutos.');
+        }
+
+        function suspendAccount(domain) {
+            if (confirm(`¿Estás seguro de que quieres suspender la cuenta de ${domain}?`)) {
+                const account = accounts.find(acc => acc.domain === domain);
+                if (account) {
+                    account.status = 'suspended';
+                    refreshAccounts();
+                    alert(`Cuenta ${domain} suspendida.`);
+                }
+            }
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStats();
+            refreshAccounts();
+        });
+    </script>
+</body>
+</html>

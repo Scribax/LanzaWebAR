@@ -92,7 +92,7 @@ const DashboardAnalytics: React.FC = () => {
                 options={{
                   responsive: true,
                   plugins: { legend: { display: false } },
-                  scales: { y: { beginAtZero: true, ticks: { stepSize: 20, max: 100 } } },
+                  scales: { y: { beginAtZero: true, max: 100, ticks: { stepSize: 20 } } },
                 }}
                 data={{
                   labels: ['L','M','X','J','V','S'],

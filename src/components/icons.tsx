@@ -34,3 +34,14 @@ export const PaletteIcon: React.FC<IconProps> = ({ className = '' }) => (
     <circle cx="9.5" cy="14" r="1.1" fill="currentColor" />
   </svg>
 )
+
+export const ServerIcon: React.FC<IconProps> = ({ className = '' }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className={className} aria-hidden="true">
+    <rect x="3" y="4" width="18" height="3" rx="1" strokeWidth="2" />
+    <rect x="3" y="10" width="18" height="3" rx="1" strokeWidth="2" />
+    <rect x="3" y="16" width="18" height="3" rx="1" strokeWidth="2" />
+    <circle cx="7" cy="5.5" r="0.5" fill="currentColor" />
+    <circle cx="7" cy="11.5" r="0.5" fill="currentColor" />
+    <circle cx="7" cy="17.5" r="0.5" fill="currentColor" />
+  </svg>
+)

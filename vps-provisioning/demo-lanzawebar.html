@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LanzaWebAR - Desarrollo Web + Hosting</title>
+    
+    <!-- Estilos base de tu sitio actual (simulados) -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header de LanzaWebAR */
+        .main-header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section Original */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #64ffda;
+            color: #1e3c72;
+            padding: 20px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Servicios Section */
+        .services {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #2c3e50;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Principal de LanzaWebAR -->
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo">🚀 LanzaWebAR</div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#hosting">Hosting</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>Tu sitio web en menos de 48 horas</h1>
+            <p>Desarrollo web profesional + hosting confiable = Tu presencia online garantizada</p>
+            <a href="#hosting" class="cta-button">Ver Planes de Hosting</a>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <div class="service-title">Desarrollo Web</div>
+                    <div class="service-description">Sitios web modernos, responsivos y optimizados para convertir visitantes en clientes.</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <div class="service-title">Hosting Premium</div>
+                    <div class="service-description">Hosting rápido y confiable con SSL gratuito, backups automáticos y soporte 24/7.</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <div class="service-title">Diseño Responsive</div>
+                    <div class="service-description">Tu sitio se verá perfecto en todos los dispositivos: móviles, tablets y desktop.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AQUÍ SE INTEGRA LA SECCIÓN DE HOSTING -->
+    <!-- Incluir todo el contenido de hosting-section.html aquí -->
+    
+    <!-- SECCIÓN DE HOSTING INTEGRADA -->
+    <section id="hosting" class="hosting-section">
+        <div class="hosting-container">
+            <!-- Hero del Hosting -->
+            <div class="hosting-hero">
+                <h2>🚀 Hosting Profesional</h2>
+                <p>Hosting rápido, seguro y confiable para tu proyecto web. Desde sitios básicos hasta aplicaciones complejas.</p>
+            </div>
+
+            <!-- Estadísticas -->
+            <div class="hosting-stats">
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime garantizado</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5min</div>
+                    <div class="stat-label">Activación automática</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Soporte técnico</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">SSL</div>
+                    <div class="stat-label">Certificado incluido</div>
+                </div>
+            </div>
+
+            <!-- Planes de Hosting -->
+            <div class="hosting-plans">
+                <!-- Plan Básico -->
+                <div class="plan-card">
+                    <div class="plan-icon">🌐</div>
+                    <div class="plan-name">Hosting Básico</div>
+                    <div class="plan-price">$600</div>
+                    <div class="plan-period">por mes</div>
+                    <ul class="plan-features">
+                        <li>1GB de almacenamiento SSD</li>
+                        <li>Transferencia ilimitada</li>
+                        <li>5 cuentas de email</li>
+                        <li>5 bases de datos MySQL</li>
+                        <li>Panel cPanel incluido</li>
+                        <li>SSL gratuito</li>
+                        <li>Backup diario automático</li>
+                        <li>Soporte 24/7</li>
+                    </ul>
+                    <button class="plan-btn" onclick="openHostingModal('basico', 600, 'Hosting Básico')">
+                        Contratar Ahora
+                    </button>
+                </div>
+
+                <!-- Plan Completo (Featured) -->
+                <div class="plan-card featured">
+                    <div class="plan-icon">⚡</div>
+                    <div class="plan-name">Web + Hosting</div>
+                    <div class="plan-price">$15.000</div>
+                    <div class="plan-period">desarrollo + 1er mes gratis</div>
+                    <ul class="plan-features">
+                        <li>Desarrollo web completo</li>
+                        <li>Diseño profesional personalizado</li>
+                        <li>Todo lo del plan básico</li>
+                        <li>Optimización SEO</li>
+                        <li>Integración redes sociales</li>
+                        <li>Formularios de contacto</li>
+                        <li>Google Analytics</li>
+                        <li>1er mes de hosting GRATIS</li>
+                    </ul>
+                    <button class="plan-btn featured" onclick="openHostingModal('completo', 15000, 'Web + Hosting Completo')">
+                        ¡Más Popular!
+                    </button>
+                </div>
+
+                <!-- Plan Premium -->
+                <div class="plan-card">
+                    <div class="plan-icon">🚀</div>
+                    <div class="plan-name">Hosting Premium</div>
+                    <div class="plan-price">$1.200</div>
+                    <div class="plan-period">por mes</div>
+                    <ul class="plan-features">
+                        <li>5GB de almacenamiento SSD</li>
+                        <li>Transferencia ilimitada</li>
+                        <li>20 cuentas de email</li>
+                        <li>Bases de datos ilimitadas</li>
+                        <li>Subdominios ilimitados</li>
+                        <li>Certificado SSL premium</li>
+                        <li>CDN incluido</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <button class="plan-btn" onclick="openHostingModal('premium', 1200, 'Hosting Premium')">
+                        Contratar Ahora
+                    </button>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <div class="cta-title">¿Listo para llevar tu proyecto online?</div>
+                <div class="cta-subtitle">Miles de clientes confían en nosotros para su presencia web</div>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-btn primary" onclick="openHostingModal('completo', 15000, 'Web + Hosting Completo')">
+                        Crear Mi Sitio Web
+                    </a>
+                    <a href="#contacto" class="cta-btn secondary">
+                        Consultar Proyecto
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Compra -->
+    <div id="hostingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeHostingModal()">&times;</span>
+            <div class="modal-header">
+                <div class="modal-title">Contratar Hosting</div>
+                <div id="modalPlanName" style="color: #667eea; font-size: 1.2rem;"></div>
+            </div>
+
+            <form id="hostingForm" onsubmit="submitHostingForm(event)">
+                <div class="form-group">
+                    <label class="form-label">Nombre completo *</label>
+                    <input type="text" class="form-input" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-input" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Teléfono</label>
+                    <input type="tel" class="form-input" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Dominio que deseas *</label>
+                    <input type="text" class="form-input" name="domain" placeholder="miempresa.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tipo de proyecto</label>
+                    <select class="form-select" name="projectType">
+                        <option value="basic">Sitio web básico</option>
+                        <option value="ecommerce">Tienda online</option>
+                        <option value="corporativo">Sitio corporativo</option>
+                        <option value="blog">Blog/Noticias</option>
+                        <option value="otro">Otro (especificar en notas)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Notas adicionales</label>
+                    <textarea class="form-input" name="notes" rows="3" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                </div>
+
+                <!-- Resumen de Precio -->
+                <div class="price-summary">
+                    <div class="price-item">
+                        <span id="serviceName">Plan seleccionado:</span>
+                        <span id="servicePrice">$0</span>
+                    </div>
+                    <div class="price-item" id="hostingRow" style="display: none;">
+                        <span>Hosting mensual:</span>
+                        <span>$600/mes</span>
+                    </div>
+                    <div class="price-item price-total">
+                        <span>Total a pagar:</span>
+                        <span id="totalPrice">$0</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="plan-btn" style="width: 100%; margin-top: 20px;">
+                    Proceder al Pago
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contacto -->
+    <section id="contacto" style="padding: 100px 0; background: #2c3e50; color: white; text-align: center;">
+        <div class="container">
+            <h2 style="margin-bottom: 40px;">¿Necesitas ayuda?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">Contactanos para una consulta gratuita sobre tu proyecto web</p>
+            <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📧</div>
+                    <div>info@lanzawebar.com</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 10px;">📱</div>
+                    <div>+54 9 XXXX XXXX</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; margin-bottom: 10px;">🌐</div>
+                    <div>lanzawebar.com</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Incluir todos los estilos de hosting-section.html -->
+    <link rel="stylesheet" href="hosting-section.css">
+    
+    <!-- Scripts -->
+    <script src="lanzawebar-integration.js"></script>
+    
+    <!-- JavaScript del modal y funcionalidades (copiado de hosting-section.html) -->
+    <script>
+        let currentPlan = null;
+
+        function openHostingModal(planType, price, planName) {
+            currentPlan = { type: planType, price: price, name: planName };
+            window.currentPlan = currentPlan; // Para acceso global
+            
+            document.getElementById('modalPlanName').textContent = planName;
+            document.getElementById('serviceName').textContent = planName + ':';
+            document.getElementById('servicePrice').textContent = '$' + price.toLocaleString();
+            document.getElementById('totalPrice').textContent = '$' + price.toLocaleString();
+            
+            // Mostrar hosting mensual si es plan completo
+            if (planType === 'completo') {
+                document.getElementById('hostingRow').style.display = 'flex';
+                document.getElementById('totalPrice').textContent = '$' + price.toLocaleString() + ' (+ $600/mes desde el 2° mes)';
+            } else {
+                document.getElementById('hostingRow').style.display = 'none';
+            }
+            
+            document.getElementById('hostingModal').style.display = 'block';
+        }
+
+        function closeHostingModal() {
+            document.getElementById('hostingModal').style.display = 'none';
+        }
+
+        // Cerrar modal al hacer click fuera
+        document.getElementById('hostingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeHostingModal();
+            }
+        });
+
+        // El submitHostingForm ahora es manejado por lanzawebar-integration.js
+        function submitHostingForm(event) {
+            // La clase LanzaWebHostingIntegration maneja esto automáticamente
+            return true;
+        }
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+
+    <!-- Estilos inline para la integración (en producción mover a CSS externo) -->
+    <style>
+        /* Estilos de hosting copiados de hosting-section.html */
+        .hosting-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hosting-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hosting-hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .hosting-hero h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hosting-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #64ffda;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .hosting-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .plan-card {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .plan-card.featured {
+            border-color: #ff6b6b;
+            transform: scale(1.05);
+        }
+
+        .plan-card.featured::before {
+            content: 'MÁS POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .plan-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .plan-period {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .plan-btn {
+            width: 100%;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .plan-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .plan-btn.featured {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 80px;
+            padding: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 20px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn.primary {
+            background: #64ffda;
+            color: #1e3c72;
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+        }
+
+        .price-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .price-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #667eea;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hosting-hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hosting-plans {
+                grid-template-columns: 1fr;
+            }
+            
+            .plan-card.featured {
+                transform: none;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</body>
+</html>

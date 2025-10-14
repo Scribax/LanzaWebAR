@@ -1,0 +1,14 @@
+{
+  "name": "Restaurante La Parrilla",
+  "email": "admin@laparrilla-demo.com",
+  "domain": "parrilla-demo.com",
+  "username": "parrilla",
+  "project_type": "basic",
+  "created_at": "2025-10-10T15:44:07.740Z",
+  "status": "active",
+  "next_billing": "2025-11-09T15:44:07.740Z",
+  "monthly_fee": 600,
+  "development_fee": 15000,
+  "total_paid": 15000,
+  "notes": "Sitio web para restaurante familiar con menú y reservas"
+}

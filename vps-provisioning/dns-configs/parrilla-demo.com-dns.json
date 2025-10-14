@@ -1,0 +1,9 @@
+{
+  "domain": "parrilla-demo.com",
+  "nameservers": [
+    "ns1.dnsmisitio.net",
+    "ns2.dnsmisitio.net",
+    "ns3.dnsmisitio.net"
+  ],
+  "configured_at": "2025-10-10T15:44:06.501Z"
+}

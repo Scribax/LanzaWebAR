@@ -1,8 +1,18 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import Reveal from './Reveal'
 
 const Contact: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'error'>('idle')
+  const navigate = useNavigate()
+
+  const handleHostingNavigation = () => {
+    navigate('/hosting')
+    // Pequeño delay para asegurar que la navegación se complete antes del scroll
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 100)
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -37,6 +47,25 @@ const Contact: React.FC = () => {
         <Reveal delay={120}>
           <p className="p mt-2">¿Tienes un proyecto en mente? Hablemos de cómo podemos ayudarte.</p>
         </Reveal>
+        
+        {/* Quick Hosting Option */}
+        <Reveal delay={160}>
+          <div className="mt-6 p-4 bg-gradient-to-r from-neutral-900/40 to-neutral-800/40 border border-neutral-700 rounded-lg">
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div>
+                <h3 className="text-sm font-semibold text-white">¿Solo necesitas hosting?</h3>
+                <p className="text-xs text-neutral-400 mt-1">Si ya tienes tu sitio web, puedes contratar hosting directamente</p>
+              </div>
+              <button 
+                onClick={handleHostingNavigation}
+                className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md transition-colors cursor-pointer"
+              >
+                Ver planes de hosting →
+              </button>
+            </div>
+          </div>
+        </Reveal>
+        
         <Reveal delay={200}>
           <form onSubmit={onSubmit} className="mt-8 grid gap-4">
             <div>

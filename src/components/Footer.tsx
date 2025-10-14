@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Footer: React.FC = () => {
   return (
@@ -8,6 +9,7 @@ const Footer: React.FC = () => {
 <p>© {new Date().getFullYear()} LanzaWeb. Todos los derechos reservados.</p>
           <div className="flex items-center gap-4">
             <a href="#home" className="hover:text-white">Inicio</a>
+            <Link to="/hosting" className="hover:text-white">Hosting</Link>
             <a href="#projects" className="hover:text-white">Proyectos</a>
             <a href="#contact" className="hover:text-white">Contacto</a>
             <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/" className="hover:text-white">LinkedIn</a>
