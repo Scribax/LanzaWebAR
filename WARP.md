@@ -260,8 +260,33 @@ npm run build
 npx tsc --noEmit
 ```
 
-## Important Notes
+## Critical Architecture Notes
 
+### Environment Variables Loading Issue
+**CRITICAL**: Services must use **lazy initialization** to avoid loading before environment variables are available.
+
+**❌ NEVER DO THIS:**
+```typescript
+// routes/payments.ts
+const mercadopagoService = new MercadoPagoService() // Loads before .env!
+```
+
+**✅ ALWAYS DO THIS:**
+```typescript
+// routes/payments.ts  
+let mercadopagoService: MercadoPagoService | null = null
+
+function getMercadoPagoService() {
+  if (!mercadopagoService) {
+    mercadopagoService = new MercadoPagoService() // Lazy load after .env
+  }
+  return mercadopagoService
+}
+```
+
+**Why**: ES module imports execute before the main module code, so `new Service()` at the top level runs before `dotenv.config()` in index.ts.
+
+### Other Important Notes
 - **Security**: All passwords are bcrypt hashed (12 rounds), JWT tokens expire after 7 days
 - **Database**: SQLite with direct SQL queries - no ORM used
 - **Hosting**: Real WHM integration - creates actual cPanel accounts
@@ -279,3 +304,229 @@ npx tsc --noEmit
 5. **Integration testing**: Use `npm run dev:full` to test full stack locally
 
 The system is production-ready and handles real hosting account creation, payment processing, and customer onboarding automatically.
+
+## VPS Production Deployment
+
+### Prerequisites
+- AlmaLinux 8.3 VPS (current production server)
+- Node.js 18+ installed
+- Nginx configured as reverse proxy
+- SSL certificates (Let's Encrypt)
+- Systemd for process management
+
+### Step-by-Step VPS Deployment
+
+#### 1. Prepare Local Code
+```bash
+# Ensure everything is committed and clean
+git add .
+git commit -m "Ready for production deployment"
+git push origin main
+```
+
+#### 2. Server Setup (SSH into VPS)
+```bash
+# Connect to your VPS
+ssh root@your-vps-ip
+
+# Navigate to project directory
+cd /var/www/lanzaweb
+
+# Pull latest changes
+git pull origin main
+```
+
+#### 3. Environment Configuration
+```bash
+# Copy production environment template
+cp server/.env.production server/.env
+
+# Edit with production-specific values
+nano server/.env
+
+# CRITICAL: Change JWT_SECRET to a strong random value
+# Verify all URLs point to https://lanzawebar.com
+```
+
+#### 4. Build Application
+```bash
+# Install/update dependencies
+npm ci
+cd server && npm ci && cd ..
+
+# Build frontend for production
+npm run build
+
+# Build backend TypeScript
+cd server && npm run build && cd ..
+```
+
+#### 5. Database Setup
+```bash
+# The SQLite database will be created automatically on first run
+# Ensure proper permissions
+chown -R www-data:www-data /var/www/lanzaweb
+chmod 755 /var/www/lanzaweb/server
+```
+
+#### 6. Systemd Service Configuration
+Create/update `/etc/systemd/system/lanzaweb-backend.service`:
+```ini
+[Unit]
+Description=LanzaWeb AR Backend Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/lanzaweb/server
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/lanzaweb/server/.env
+ExecStart=/usr/bin/node dist/index.js
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### 7. Nginx Configuration
+Ensure `/etc/nginx/sites-available/lanzawebar.com` includes:
+```nginx
+server {
+    listen 443 ssl http2;
+    server_name lanzawebar.com www.lanzawebar.com;
+    
+    # SSL configuration
+    ssl_certificate /etc/letsencrypt/live/lanzawebar.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/lanzawebar.com/privkey.pem;
+    
+    # Frontend static files
+    location / {
+        root /var/www/lanzaweb/dist;
+        try_files $uri $uri/ /index.html;
+        
+        # Cache static assets
+        location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+            expires 1y;
+            add_header Cache-Control "public, immutable";
+        }
+    }
+    
+    # Backend API
+    location /api/ {
+        proxy_pass http://localhost:3001/api/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        
+        # Timeout settings for long operations (hosting creation)
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 120s;
+    }
+}
+```
+
+#### 8. Deploy and Start Services
+```bash
+# Restart and enable the backend service
+systemctl daemon-reload
+systemctl restart lanzaweb-backend
+systemctl enable lanzaweb-backend
+
+# Check service status
+systemctl status lanzaweb-backend
+
+# Check logs if needed
+journalctl -u lanzaweb-backend -f
+
+# Restart Nginx
+systemctl restart nginx
+```
+
+#### 9. Verify Deployment
+```bash
+# Test backend directly
+curl http://localhost:3001/api/health
+
+# Test through Nginx
+curl https://lanzawebar.com/api/health
+
+# Check frontend
+curl https://lanzawebar.com
+```
+
+### Production Environment Variables
+Key variables that MUST be set correctly in production `.env`:
+
+```bash
+# Security
+JWT_SECRET=super_strong_random_secret_here
+NODE_ENV=production
+
+# URLs (HTTPS in production)
+FRONTEND_URL=https://lanzawebar.com
+BACKEND_URL=https://lanzawebar.com
+
+# MercadoPago URLs (HTTPS)
+MERCADOPAGO_SUCCESS_URL=https://lanzawebar.com/payment/success
+MERCADOPAGO_FAILURE_URL=https://lanzawebar.com/payment/failure
+MERCADOPAGO_PENDING_URL=https://lanzawebar.com/payment/pending
+```
+
+### Deployment Checklist
+- [ ] Code committed and pushed to GitHub
+- [ ] VPS has latest code (`git pull`)
+- [ ] Production `.env` configured with HTTPS URLs
+- [ ] JWT_SECRET changed to production value
+- [ ] Dependencies installed (`npm ci`)
+- [ ] Frontend built (`npm run build`)
+- [ ] Backend built (`cd server && npm run build`)
+- [ ] Systemd service restarted
+- [ ] Nginx configuration updated
+- [ ] SSL certificates valid
+- [ ] Backend service running (`systemctl status lanzaweb-backend`)
+- [ ] API accessible via HTTPS
+- [ ] Frontend loading correctly
+- [ ] Payment flow tested (use small amount)
+- [ ] Email notifications working
+- [ ] WHM integration functional
+
+### Troubleshooting Production Issues
+
+#### Service Won't Start
+```bash
+# Check detailed logs
+journalctl -u lanzaweb-backend -n 50
+
+# Check environment variables loading
+sudo -u root env $(cat /var/www/lanzaweb/server/.env | xargs) node /var/www/lanzaweb/server/dist/index.js
+```
+
+#### Database Issues
+```bash
+# Check database file permissions
+ls -la /var/www/lanzaweb/server/database.sqlite
+
+# Recreate database if corrupted
+rm /var/www/lanzaweb/server/database.sqlite
+systemctl restart lanzaweb-backend
+```
+
+#### API Not Accessible
+```bash
+# Test backend directly
+curl http://localhost:3001/api/health
+
+# Check Nginx configuration
+nginx -t
+systemctl reload nginx
+```

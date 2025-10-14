@@ -4,8 +4,24 @@ import MercadoPagoService, { HostingOrderRequest } from '../services/mercadopago
 import HostingAutomationService, { HostingOrderData } from '../services/hostingAutomation'
 
 const router = express.Router()
-const mercadopagoService = new MercadoPagoService()
-const hostingService = new HostingAutomationService()
+
+// Lazy initialization para evitar cargar antes de las variables de entorno
+let mercadopagoService: MercadoPagoService | null = null
+let hostingService: HostingAutomationService | null = null
+
+function getMercadoPagoService() {
+  if (!mercadopagoService) {
+    mercadopagoService = new MercadoPagoService()
+  }
+  return mercadopagoService
+}
+
+function getHostingService() {
+  if (!hostingService) {
+    hostingService = new HostingAutomationService()
+  }
+  return hostingService
+}
 
 // Crear preferencia de pago
 router.post('/create-preference', async (req, res) => {
@@ -37,7 +53,7 @@ router.post('/create-preference', async (req, res) => {
     })
 
     // Crear preferencia en MercadoPago
-    const result = await mercadopagoService.createPaymentPreference(orderData)
+    const result = await getMercadoPagoService().createPaymentPreference(orderData)
     
     if (result.success) {
       console.log('✅ [PAYMENTS] Preferencia creada exitosamente:', result.preferenceId)
@@ -99,7 +115,7 @@ router.post('/webhook', async (req, res) => {
     console.log(`🔍 [WEBHOOK] Procesando pago: ${paymentId}`)
     
     // Obtener información completa del pago
-    const paymentInfo = await mercadopagoService.getPaymentInfo(paymentId.toString())
+    const paymentInfo = await getMercadoPagoService().getPaymentInfo(paymentId.toString())
     
     if (!paymentInfo.success) {
       console.error('❌ [WEBHOOK] Error obteniendo info del pago:', paymentInfo.error)
@@ -156,7 +172,7 @@ router.post('/webhook', async (req, res) => {
     })
 
     // EJECUTAR AUTOMATIZACIÓN COMPLETA
-    const automationResult = await hostingService.processHostingOrder(automationData)
+    const automationResult = await getHostingService().processHostingOrder(automationData)
     
     if (automationResult.success) {
       console.log('🎊 [WEBHOOK] ¡AUTOMATIZACIÓN COMPLETADA EXITOSAMENTE!')
@@ -187,7 +203,7 @@ router.get('/payment-status/:paymentId', async (req, res) => {
     
     console.log(`🔍 [PAYMENTS] Consultando estado del pago: ${paymentId}`)
     
-    const result = await mercadopagoService.getPaymentInfo(paymentId)
+    const result = await getMercadoPagoService().getPaymentInfo(paymentId)
     
     if (result.success) {
       res.json({

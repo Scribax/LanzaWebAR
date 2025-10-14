@@ -1,11 +1,49 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import path from 'path'
+import fs from 'fs'
+import { fileURLToPath } from 'url'
 import nodemailer from 'nodemailer'
 import { initializeDatabase, database } from './database'
 import { authMiddleware, generateToken, hashPassword, verifyPassword, isValidEmail, isStrongPassword, AuthRequest } from './auth'
 
-dotenv.config()
+// Fix for __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// Configurar dotenv - Detecta automáticamente la ubicación correcta del .env
+// IMPORTANTE: Usar lazy initialization en los servicios para evitar problemas de orden
+const envPaths = [
+  path.resolve(process.cwd(), '.env'),           // Directorio actual (server/)
+  path.resolve(process.cwd(), '..', 'server', '.env'),  // Si ejecutamos desde root/
+  path.resolve(__dirname, '..', '..', '.env')    // Relativo al archivo compilado
+]
+
+// Cargar variables de entorno
+let envLoaded = false
+for (const envPath of envPaths) {
+  if (fs.existsSync(envPath)) {
+    dotenv.config({ path: envPath })
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`🔧 Variables cargadas desde: ${envPath}`)
+    }
+    envLoaded = true
+    break
+  }
+}
+
+if (!envLoaded) {
+  console.warn('⚠️ No se encontró archivo .env. Usando variables del sistema.')
+}
+
+// Solo mostrar debug en desarrollo
+if (process.env.NODE_ENV !== 'production') {
+  console.log('🔍 Variables de entorno:')
+  console.log('- JWT_SECRET:', process.env.JWT_SECRET ? '✅' : '❌')
+  console.log('- MERCADOPAGO_ACCESS_TOKEN:', process.env.MERCADOPAGO_ACCESS_TOKEN ? '✅' : '❌')
+  console.log('- SMTP_HOST:', process.env.SMTP_HOST ? '✅' : '❌')
+}
 
 const app = express()
 app.use(cors())
