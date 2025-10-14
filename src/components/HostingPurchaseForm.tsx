@@ -124,27 +124,18 @@ export default function HostingPurchaseForm({ selectedPlan, onClose, onSubmit }:
       if (result.success && result.initPoint) {
         console.log('✅ Preferencia de pago creada:', result.preferenceId)
         
-        // Mostrar mensaje informativo antes de redireccionar
-        const infoMessage = `
-💳 ¡Perfecto! Ahora procederemos al pago seguro.
-
-🔒 Serás redirigido a MercadoPago para completar tu compra de forma segura.
-
-🎯 Después del pago exitoso:
-• Tu hosting se creará AUTOMÁTICAMENTE
-• Recibirás las credenciales por email
-• Tu sitio estará listo en minutos
-
-🚀 ¡Presiona OK para ir a pagar!
-        `
+        // Redirigir directamente a MercadoPago
         
-        if (confirm(infoMessage)) {
-          // Cerrar modal antes de redireccionar
-          onClose()
-          
-          // Redireccionar a MercadoPago
+        // Mostrar loading y redirigir directamente
+        console.log("🚀 Redirigiendo a MercadoPago...")
+        
+        // Cerrar modal antes de redireccionar
+        onClose()
+        
+        // Pequeño delay para mejor UX
+        setTimeout(() => {
           window.location.href = result.initPoint
-        }
+        }, 500)
       } else {
         throw new Error(result.error || 'Error creando preferencia de pago')
       }
@@ -655,7 +646,7 @@ export default function HostingPurchaseForm({ selectedPlan, onClose, onSubmit }:
                   {loading ? (
                     <>
                       <Loader className="w-5 h-5 animate-spin" />
-                      Procesando...
+                      Redirigiendo a MercadoPago...
                     </>
                   ) : (
                     <>
