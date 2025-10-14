@@ -56,7 +56,7 @@ const HostingServices: React.FC = () => {
   const fetchServices = async () => {
     try {
       setLoading(true)
-      const response = await fetch('http://localhost:3001/api/hosting/orders', {
+      const response = await fetch('https://lanzawebar.com/api/hosting/orders', {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

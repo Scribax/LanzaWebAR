@@ -26,6 +26,8 @@ import Dashboard from './pages/Dashboard'
 import HostingServices from './pages/HostingServices'
 import Billing from './pages/Billing'
 import PaymentSuccess from './pages/payment/PaymentSuccess'
+import PaymentFailure from './pages/payment/PaymentFailure'
+import PaymentPending from './pages/payment/PaymentPending'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import NotFound from './pages/NotFound'
 
@@ -79,6 +81,8 @@ function App() {
         <Route path="/projects/real-estate-pro" element={<RealEstatePro />} />
         <Route path="/projects/ecommerce-minimal/:id" element={<ProductDetail />} />
         <Route path="/payment/success" element={<PaymentSuccess />} />
+        <Route path="/payment/failure" element={<PaymentFailure />} />
+        <Route path="/payment/pending" element={<PaymentPending />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <WhatsAppButton />

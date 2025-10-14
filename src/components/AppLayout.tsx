@@ -25,13 +25,13 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     // Redirect to main domain login
     window.location.href = process.env.NODE_ENV === 'production' 
       ? 'https://lanzawebar.com/login'
-      : 'http://localhost:5173/login'
+      : 'https://lanzawebar.com/login'
   }
 
   const goToMainSite = () => {
     window.location.href = process.env.NODE_ENV === 'production' 
       ? 'https://lanzawebar.com'
-      : 'http://localhost:5173'
+      : 'https://lanzawebar.com'
   }
 
   return (

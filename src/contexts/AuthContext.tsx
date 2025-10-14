@@ -35,7 +35,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const API_BASE = 'http://localhost:3001/api'
+  const API_BASE = 'https://lanzawebar.com/api'
 
   // Cargar datos del localStorage al iniciar
   useEffect(() => {

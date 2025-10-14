@@ -105,7 +105,7 @@ export default function HostingPurchaseForm({ selectedPlan, onClose, onSubmit }:
       console.log('📋 Datos del pago:', paymentData)
       
       // Crear preferencia de pago en MercadoPago
-      const response = await fetch('http://localhost:3001/api/payments/create-preference', {
+      const response = await fetch('https://lanzawebar.com/api/payments/create-preference', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

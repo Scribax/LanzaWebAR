@@ -1,6 +1,6 @@
 class EmailService {
     constructor() {
-        this.apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+        this.apiUrl = process.env.REACT_APP_API_URL || 'https://lanzawebar.com';
     }
     // Template de email de bienvenida con credenciales
     generateWelcomeEmail(credentials) {
@@ -210,7 +210,7 @@ www.lanzawebar.com
                 </div>
                 
                 <div style="text-align: center;">
-                    <a href="${process.env.REACT_APP_FRONTEND_URL || 'http://localhost:5173'}/dashboard" class="cta-button">🎯 Ir a mi Dashboard</a>
+                    <a href="${process.env.REACT_APP_FRONTEND_URL || 'https://lanzawebar.com'}/dashboard" class="cta-button">🎯 Ir a mi Dashboard</a>
                 </div>
                 
                 <h3>💡 Próximos Pasos:</h3>
@@ -270,7 +270,7 @@ Tu cuenta ha sido creada exitosamente. Aquí está lo que puedes hacer:
 🎁 OFERTA ESPECIAL: 15% de descuento en tu primer hosting
 Código: BIENVENIDO15
 
-Accede a tu dashboard: ${process.env.REACT_APP_FRONTEND_URL || 'http://localhost:5173'}/dashboard
+Accede a tu dashboard: ${process.env.REACT_APP_FRONTEND_URL || 'https://lanzawebar.com'}/dashboard
 
 ¿Necesitas ayuda?
 📧 soporte@lanzawebar.com

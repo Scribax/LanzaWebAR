@@ -68,7 +68,7 @@ const Dashboard: React.FC = () => {
       setIsLoadingData(true)
       
       // Fetch orders
-      const ordersResponse = await fetch('http://localhost:3001/api/hosting/orders', {
+      const ordersResponse = await fetch('https://lanzawebar.com/api/hosting/orders', {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
