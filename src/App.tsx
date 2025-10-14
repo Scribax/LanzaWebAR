@@ -30,6 +30,7 @@ import PaymentFailure from './pages/payment/PaymentFailure'
 import PaymentPending from './pages/payment/PaymentPending'
 import { ProtectedRoute } from './components/ProtectedRoute'
 import NotFound from './pages/NotFound'
+import TestingPage from './pages/TestingPage'
 
 function HomePage() {
   return (
@@ -83,6 +84,7 @@ function App() {
         <Route path="/payment/success" element={<PaymentSuccess />} />
         <Route path="/payment/failure" element={<PaymentFailure />} />
         <Route path="/payment/pending" element={<PaymentPending />} />
+        <Route path="/page/testing" element={<TestingPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <WhatsAppButton />
