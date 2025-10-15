@@ -9,7 +9,7 @@ Hemos probado y verificado que funciona perfectamente:
 - **Sistema crea**: `patito1313.lanzawebar.com`  
 - **Plan aplicado**: `lanzawe1_lanza_pro` (Plan Intermedio - 5GB/50GB)
 - **Username**: `patito13` (basado en su elección)
-- **Password**: `LW159598UZJy!` (seguro, único)
+- **Password**: `[REDACTED_DEMO_PASSWORD]` (seguro, único)
 - **Estado**: ✅ CUENTA REAL CREADA Y FUNCIONANDO
 
 ---
@@ -41,7 +41,7 @@ Tu archivo `server/src/services/hostingAutomation.ts` ha sido actualizado con:
 2. **Password Seguro:**
 ```javascript
 // Formato: LW[timestamp][6chars]!
-// Ejemplo: LW159598UZJy!
+// Ejemplo: [REDACTED_DEMO_PASSWORD]
 // NO contiene username (cumple requisitos WHM)
 ```
 
@@ -91,7 +91,7 @@ Frontend: "intermedio" → WHM: "lanzawe1_lanza_pro"
 "patito1313" → "patito13" (máx 8 chars para cPanel)
 
 // 4. Password seguro
-Genera: "LW159598UZJy!" (no contiene username)
+Genera: "[REDACTED_DEMO_PASSWORD]" (no contiene username)
 
 // 5. Creación en WHM
 ✅ Cuenta real creada con credenciales reales
@@ -119,7 +119,7 @@ Genera: "LW159598UZJy!" (no contiene username)
 - Recibe email con:
   - `🌐 Sitio: https://patito1313.lanzawebar.com`
   - `👤 Usuario: patito13`
-  - `🔒 Password: LW159598UZJy!`
+  - `🔒 Password: [REDACTED_DEMO_PASSWORD]`
   - `🖥️ cPanel: https://blue106.dnsmisitio.net:2083`
 
 ---
@@ -133,7 +133,7 @@ Hola María González,
 
 🌐 Sitio web: https://patito1313.lanzawebar.com
 👤 Usuario cPanel: patito13  
-🔒 Contraseña: LW159598UZJy!
+🔒 Contraseña: [REDACTED_DEMO_PASSWORD]
 🖥️ Panel de control: https://blue106.dnsmisitio.net:2083
 
 Tu plan Intermedio (5GB/50GB) está activo.
