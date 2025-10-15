@@ -18,13 +18,13 @@
     <![endif]-->
     
     <style>
-        /* Reset de email */
-        * { box-sizing: border-box; }
+        /* Reset universal para emails */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
         table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-        img { -ms-interpolation-mode: bicubic; }
+        img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
         
-        /* Resetear colores de links para clientes */
+        /* Links seguros */
         a[x-apple-data-detectors] {
             color: inherit !important;
             text-decoration: inherit !important;
@@ -34,87 +34,101 @@
             line-height: inherit !important;
         }
         
-        /* Base styles */
+        /* Body base */
         body {
             width: 100% !important;
             height: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
-            background-color: #0a0a0a;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a !important;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+            line-height: 1.6;
+            color: #e2e8f0;
         }
         
-        /* Container principal */
+        /* Contenedor principal */
+        .email-wrapper {
+            width: 100%;
+            background-color: #0f172a;
+            padding: 30px 15px;
+            margin: 0;
+        }
+        
         .email-container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #1a1a1a;
+            background-color: #1e293b;
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(34, 197, 94, 0.2);
         }
         
-        /* Header con gradiente y dinosaurio */
+        /* Header moderno */
         .header {
-            background: linear-gradient(135deg, #22c55e 0%, #06b6d4 50%, #3b82f6 100%);
-            padding: 40px 20px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 25%, #06b6d4 50%, #0284c7 75%, #3b82f6 100%);
+            padding: 40px 30px;
             text-align: center;
             position: relative;
         }
         
-        .header::before {
+        .header::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1), transparent 50%);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 10px solid #3b82f6;
         }
         
-        .logo-container {
-            position: relative;
-            z-index: 2;
+        .brand-icon {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
             margin-bottom: 20px;
-        }
-        
-        .logo {
-            width: 80px;
-            height: 80px;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            line-height: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
         .header-title {
-            color: white;
+            color: #ffffff;
             font-size: 28px;
             font-weight: 700;
             margin: 0 0 8px 0;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 2;
+            letter-spacing: -0.5px;
         }
         
         .header-subtitle {
             color: rgba(255, 255, 255, 0.9);
             font-size: 16px;
             margin: 0;
-            position: relative;
-            z-index: 2;
+            font-weight: 400;
         }
         
         /* Contenido principal */
         .content {
-            padding: 40px;
-            background: #1a1a1a;
-            color: #f5f5f5;
-            line-height: 1.6;
+            background-color: #1e293b;
+            padding: 40px 30px;
+            color: #e2e8f0;
         }
         
         .content h1 {
-            color: #f5f5f5;
+            color: #f8fafc;
             font-size: 24px;
             margin: 0 0 20px 0;
             font-weight: 600;
+            line-height: 1.3;
         }
         
         .content h2 {
@@ -124,79 +138,149 @@
             font-weight: 600;
         }
         
+        .content h3 {
+            color: #06b6d4;
+            font-size: 18px;
+            margin: 20px 0 12px 0;
+            font-weight: 600;
+        }
+        
         .content p {
             margin: 16px 0;
-            color: #e5e7eb;
+            color: #cbd5e1;
+            font-size: 15px;
+            line-height: 1.6;
         }
         
-        /* Card destacada */
-        .highlight-card {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1e293b 100%);
-            border: 2px solid #22c55e;
+        /* Cards profesionales */
+        .card {
+            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 12px;
-            padding: 24px;
-            margin: 24px 0;
+            padding: 25px;
+            margin: 25px 0;
             position: relative;
-            overflow: hidden;
         }
         
-        .highlight-card::before {
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 3px;
             background: linear-gradient(90deg, #22c55e, #06b6d4, #3b82f6);
+            border-radius: 12px 12px 0 0;
         }
         
-        .highlight-card h3 {
+        .card.highlight {
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
+        }
+        
+        .card h3 {
             color: #22c55e;
             font-size: 18px;
             margin: 0 0 12px 0;
             font-weight: 600;
         }
         
-        /* Lista con estilo */
-        .details-list {
+        /* Listas estilizadas */
+        .styled-list {
             list-style: none;
             padding: 0;
             margin: 16px 0;
         }
         
-        .details-list li {
-            padding: 8px 0;
+        .styled-list li {
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            color: #e5e7eb;
+            color: #cbd5e1;
+            position: relative;
+            padding-left: 20px;
         }
         
-        .details-list li:last-child {
+        .styled-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+        
+        .styled-list li:last-child {
             border-bottom: none;
         }
         
-        .details-list strong {
+        .styled-list strong {
             color: #22c55e;
             font-weight: 600;
         }
         
-        /* Botones */
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background: linear-gradient(135deg, #22c55e, #06b6d4);
-            color: white !important;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            text-align: center;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        /* Grid de características */
+        .feature-grid {
+            display: table;
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: separate;
+            border-spacing: 15px 15px;
         }
         
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+        .feature-row {
+            display: table-row;
+        }
+        
+        .feature-cell {
+            display: table-cell;
+            width: 50%;
+            vertical-align: top;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .feature-cell h4 {
+            color: #22c55e;
+            margin: 0 0 8px 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .feature-cell p {
+            margin: 0;
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+        
+        /* Botones profesionales */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: center;
+            margin: 8px 4px;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+            border: none;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #06b6d4, #0284c7);
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #22c55e;
+            color: #22c55e !important;
+            box-shadow: none;
         }
         
         /* Texto con gradiente */
@@ -208,174 +292,156 @@
             font-weight: 700;
         }
         
-        /* Footer */
+        /* Bloques de código */
+        .code-block {
+            background-color: #0f172a;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 16px 0;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #e2e8f0;
+            overflow-x: auto;
+        }
+        
+        .code-inline {
+            background-color: #374151;
+            color: #22c55e;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        
+        /* Alertas */
+        .alert {
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+        
+        .alert-success {
+            background-color: rgba(34, 197, 94, 0.1);
+            border-color: #22c55e;
+            color: #86efac;
+        }
+        
+        .alert-info {
+            background-color: rgba(6, 182, 212, 0.1);
+            border-color: #06b6d4;
+            color: #7dd3fc;
+        }
+        
+        .alert-warning {
+            background-color: rgba(251, 191, 36, 0.1);
+            border-color: #fbbf24;
+            color: #fcd34d;
+        }
+        
+        /* Footer profesional */
         .footer {
-            background: #111;
-            padding: 30px 20px;
+            background-color: #111827;
+            padding: 30px;
             text-align: center;
-            border-top: 1px solid #333;
+            border-top: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        
+        .footer-brand {
+            color: #22c55e;
+            font-weight: 700;
+            font-size: 18px;
+            margin: 0 0 8px 0;
         }
         
         .footer p {
-            margin: 8px 0;
+            margin: 6px 0;
             color: #9ca3af;
-            font-size: 14px;
+            font-size: 13px;
         }
         
-        .footer .brand {
+        .footer a {
             color: #22c55e;
-            font-weight: 600;
+            text-decoration: none;
         }
         
-        /* Efectos especiales */
-        .glow {
-            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+        .footer a:hover {
+            color: #06b6d4;
         }
         
-        .pulse {
-            animation: pulse 2s infinite;
+        /* Líneas decorativas */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #22c55e, #06b6d4, #3b82f6, transparent);
+            margin: 30px 0;
+            border: none;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        /* Responsive */
+        /* Responsive optimizado */
         @media screen and (max-width: 600px) {
-            .email-container {
-                width: 100% !important;
-                margin: 0 !important;
-                border-radius: 0 !important;
-            }
-            
-            .header {
-                padding: 30px 15px !important;
-            }
-            
-            .content {
-                padding: 30px 20px !important;
-            }
-            
-            .header-title {
-                font-size: 24px !important;
-            }
-            
-            .content h1 {
-                font-size: 20px !important;
-            }
+            .email-wrapper { padding: 15px 10px !important; }
+            .email-container { border-radius: 12px !important; }
+            .header { padding: 30px 20px !important; }
+            .content { padding: 25px 20px !important; }
+            .footer { padding: 25px 20px !important; }
+            .header-title { font-size: 24px !important; }
+            .content h1 { font-size: 20px !important; }
+            .content h2 { font-size: 18px !important; }
+            .btn { display: block !important; margin: 10px 0 !important; text-align: center !important; }
+            .feature-cell { display: block !important; width: 100% !important; margin-bottom: 10px !important; }
+            .feature-grid { border-spacing: 0 10px !important; }
         }
         
-        /* Dark mode específico */
+        /* Soporte para modo oscuro */
         @media (prefers-color-scheme: dark) {
-            .email-container {
-                border: 1px solid #333;
-            }
+            .email-container { border-color: rgba(34, 197, 94, 0.3) !important; }
         }
+        
+        /* Optimizaciones para Outlook */
+        [data-ogsc] .header { background: linear-gradient(135deg, #22c55e 0%, #06b6d4 50%, #3b82f6 100%) !important; }
+        [data-ogsc] .content { background-color: #1e293b !important; }
+        [data-ogsc] .footer { background-color: #111827 !important; }
     </style>
 </head>
 
 <body>
     <!--[if mso | IE]>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;">
-        <tr>
-            <td>
+        <tr><td>
     <![endif]-->
     
-    <div class="email-container">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo-container">
-                <!-- Dinosaurio SVG inlined y optimizado -->
-                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="dinoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
-                            <stop offset="50%" stop-color="#f0f9ff" stop-opacity="0.9"/>
-                            <stop offset="100%" stop-color="#e0f2fe" stop-opacity="0.85"/>
-                        </linearGradient>
-                        <linearGradient id="bellyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
-                            <stop offset="100%" stop-color="#f0f9ff" stop-opacity="0.7"/>
-                        </linearGradient>
-                        <radialGradient id="eyeGradient" cx="50%" cy="30%" r="70%">
-                            <stop offset="0%" stop-color="#ffffff"/>
-                            <stop offset="100%" stop-color="#f3f4f6"/>
-                        </radialGradient>
-                        <linearGradient id="rocketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#fbbf24"/>
-                            <stop offset="50%" stop-color="#f59e0b"/>
-                            <stop offset="100%" stop-color="#d97706"/>
-                        </linearGradient>
-                    </defs>
-                    
-                    <!-- Cuerpo del dinosaurio -->
-                    <ellipse cx="50" cy="60" rx="25" ry="20" fill="url(#dinoGradient)"/>
-                    <ellipse cx="50" cy="65" rx="18" ry="14" fill="url(#bellyGradient)" opacity="0.7"/>
-                    
-                    <!-- Cabeza -->
-                    <ellipse cx="50" cy="35" rx="20" ry="18" fill="url(#dinoGradient)"/>
-                    <ellipse cx="50" cy="42" rx="12" ry="8" fill="url(#dinoGradient)"/>
-                    <ellipse cx="50" cy="45" rx="8" ry="5" fill="url(#bellyGradient)" opacity="0.8"/>
-                    
-                    <!-- Ojos -->
-                    <circle cx="43" cy="30" r="6" fill="url(#eyeGradient)"/>
-                    <circle cx="57" cy="30" r="6" fill="url(#eyeGradient)"/>
-                    <circle cx="44" cy="31" r="3" fill="#1f2937"/>
-                    <circle cx="56" cy="31" r="3" fill="#1f2937"/>
-                    <circle cx="45" cy="29" r="1.5" fill="#ffffff"/>
-                    <circle cx="57" cy="29" r="1.5" fill="#ffffff"/>
-                    
-                    <!-- Extremidades -->
-                    <ellipse cx="38" cy="75" rx="6" ry="8" fill="url(#dinoGradient)"/>
-                    <ellipse cx="62" cy="75" rx="6" ry="8" fill="url(#dinoGradient)"/>
-                    <ellipse cx="28" cy="55" rx="4" ry="10" fill="url(#dinoGradient)"/>
-                    <ellipse cx="72" cy="55" rx="4" ry="10" fill="url(#dinoGradient)"/>
-                    
-                    <!-- Cola y cresta -->
-                    <ellipse cx="75" cy="58" rx="8" ry="15" fill="url(#dinoGradient)" transform="rotate(15 75 58)"/>
-                    <path d="M 40 20 Q 50 15 60 20 Q 55 25 50 23 Q 45 25 40 20" fill="url(#dinoGradient)"/>
-                    
-                    <!-- Cohete -->
-                    <g transform="translate(20, 25) scale(0.8)">
-                        <ellipse cx="15" cy="25" rx="4" ry="12" fill="url(#rocketGradient)"/>
-                        <path d="M 15 10 L 11 15 L 19 15 Z" fill="#fbbf24"/>
-                        <circle cx="15" cy="20" r="3" fill="#60a5fa" opacity="0.8"/>
-                        <circle cx="15" cy="20" r="2" fill="#dbeafe"/>
-                        <path d="M 11 35 Q 15 40 19 35 Q 15 38 11 35" fill="#f97316" opacity="0.9"/>
-                        <path d="M 13 37 Q 15 40 17 37 Q 15 39 13 37" fill="#fbbf24" opacity="0.8"/>
-                    </g>
-                    
-                    <!-- Detalles finales -->
-                    <circle cx="35" cy="38" r="3" fill="#fca5a5" opacity="0.6"/>
-                    <circle cx="65" cy="38" r="3" fill="#fca5a5" opacity="0.6"/>
-                    <path d="M 45 47 Q 50 52 55 47" stroke="#1f2937" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                </svg>
+    <div class="email-wrapper">
+        <div class="email-container">
+            <!-- Header profesional -->
+            <div class="header">
+                <div class="brand-icon">LW</div>
+                <h1 class="header-title">{{headerTitle}}</h1>
+                <p class="header-subtitle">{{headerSubtitle}}</p>
             </div>
             
-            <h1 class="header-title">{{headerTitle}}</h1>
-            <p class="header-subtitle">{{headerSubtitle}}</p>
-        </div>
-        
-        <!-- Contenido principal -->
-        <div class="content">
-            {{content}}
-        </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <p class="brand">🦕 LanzaWebAR - Hosting & Desarrollo Web</p>
-            <p>Tu partner tecnológico de confianza</p>
-            <p style="font-size: 12px; margin-top: 20px;">
-                Este email fue enviado desde nuestro sistema automatizado.<br>
-                Si tienes preguntas, contáctanos en <a href="mailto:{{contactEmail}}" style="color: #22c55e;">{{contactEmail}}</a>
-            </p>
+            <!-- Contenido principal -->
+            <div class="content">
+                {{content}}
+            </div>
+            
+            <hr class="divider">
+            
+            <!-- Footer -->
+            <div class="footer">
+                <p class="footer-brand">LanzaWebAR</p>
+                <p>Hosting & Desarrollo Web Profesional</p>
+                <p style="margin-top: 15px; font-size: 12px;">
+                    Email enviado automáticamente desde nuestro sistema<br>
+                    ¿Consultas? Contáctanos en <a href="mailto:{{contactEmail}}">{{contactEmail}}</a>
+                </p>
+            </div>
         </div>
     </div>
     
     <!--[if mso | IE]>
-            </td>
-        </tr>
+        </td></tr>
     </table>
     <![endif]-->
 </body>
