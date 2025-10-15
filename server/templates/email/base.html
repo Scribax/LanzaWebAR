@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>{{subject}}</title>
+    
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    
+    <style>
+        /* Reset de email */
+        * { box-sizing: border-box; }
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; }
+        
+        /* Resetear colores de links para clientes */
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: inherit !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+        
+        /* Base styles */
+        body {
+            width: 100% !important;
+            height: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #0a0a0a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Container principal */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Header con gradiente y dinosaurio */
+        .header {
+            background: linear-gradient(135deg, #22c55e 0%, #06b6d4 50%, #3b82f6 100%);
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1), transparent 50%);
+        }
+        
+        .logo-container {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+        
+        .header-title {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Contenido principal */
+        .content {
+            padding: 40px;
+            background: #1a1a1a;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        .content h1 {
+            color: #f5f5f5;
+            font-size: 24px;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+        }
+        
+        .content h2 {
+            color: #22c55e;
+            font-size: 20px;
+            margin: 30px 0 15px 0;
+            font-weight: 600;
+        }
+        
+        .content p {
+            margin: 16px 0;
+            color: #e5e7eb;
+        }
+        
+        /* Card destacada */
+        .highlight-card {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1e293b 100%);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .highlight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #22c55e, #06b6d4, #3b82f6);
+        }
+        
+        .highlight-card h3 {
+            color: #22c55e;
+            font-size: 18px;
+            margin: 0 0 12px 0;
+            font-weight: 600;
+        }
+        
+        /* Lista con estilo */
+        .details-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+        
+        .details-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e5e7eb;
+        }
+        
+        .details-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .details-list strong {
+            color: #22c55e;
+            font-weight: 600;
+        }
+        
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #22c55e, #06b6d4);
+            color: white !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+        }
+        
+        /* Texto con gradiente */
+        .gradient-text {
+            background: linear-gradient(90deg, #22c55e, #06b6d4, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #111;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+        
+        .footer p {
+            margin: 8px 0;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        
+        .footer .brand {
+            color: #22c55e;
+            font-weight: 600;
+        }
+        
+        /* Efectos especiales */
+        .glow {
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+            }
+            
+            .header {
+                padding: 30px 15px !important;
+            }
+            
+            .content {
+                padding: 30px 20px !important;
+            }
+            
+            .header-title {
+                font-size: 24px !important;
+            }
+            
+            .content h1 {
+                font-size: 20px !important;
+            }
+        }
+        
+        /* Dark mode específico */
+        @media (prefers-color-scheme: dark) {
+            .email-container {
+                border: 1px solid #333;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;">
+        <tr>
+            <td>
+    <![endif]-->
+    
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-container">
+                <!-- Dinosaurio SVG inlined y optimizado -->
+                <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="dinoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+                            <stop offset="50%" stop-color="#f0f9ff" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#e0f2fe" stop-opacity="0.85"/>
+                        </linearGradient>
+                        <linearGradient id="bellyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+                            <stop offset="100%" stop-color="#f0f9ff" stop-opacity="0.7"/>
+                        </linearGradient>
+                        <radialGradient id="eyeGradient" cx="50%" cy="30%" r="70%">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="100%" stop-color="#f3f4f6"/>
+                        </radialGradient>
+                        <linearGradient id="rocketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fbbf24"/>
+                            <stop offset="50%" stop-color="#f59e0b"/>
+                            <stop offset="100%" stop-color="#d97706"/>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Cuerpo del dinosaurio -->
+                    <ellipse cx="50" cy="60" rx="25" ry="20" fill="url(#dinoGradient)"/>
+                    <ellipse cx="50" cy="65" rx="18" ry="14" fill="url(#bellyGradient)" opacity="0.7"/>
+                    
+                    <!-- Cabeza -->
+                    <ellipse cx="50" cy="35" rx="20" ry="18" fill="url(#dinoGradient)"/>
+                    <ellipse cx="50" cy="42" rx="12" ry="8" fill="url(#dinoGradient)"/>
+                    <ellipse cx="50" cy="45" rx="8" ry="5" fill="url(#bellyGradient)" opacity="0.8"/>
+                    
+                    <!-- Ojos -->
+                    <circle cx="43" cy="30" r="6" fill="url(#eyeGradient)"/>
+                    <circle cx="57" cy="30" r="6" fill="url(#eyeGradient)"/>
+                    <circle cx="44" cy="31" r="3" fill="#1f2937"/>
+                    <circle cx="56" cy="31" r="3" fill="#1f2937"/>
+                    <circle cx="45" cy="29" r="1.5" fill="#ffffff"/>
+                    <circle cx="57" cy="29" r="1.5" fill="#ffffff"/>
+                    
+                    <!-- Extremidades -->
+                    <ellipse cx="38" cy="75" rx="6" ry="8" fill="url(#dinoGradient)"/>
+                    <ellipse cx="62" cy="75" rx="6" ry="8" fill="url(#dinoGradient)"/>
+                    <ellipse cx="28" cy="55" rx="4" ry="10" fill="url(#dinoGradient)"/>
+                    <ellipse cx="72" cy="55" rx="4" ry="10" fill="url(#dinoGradient)"/>
+                    
+                    <!-- Cola y cresta -->
+                    <ellipse cx="75" cy="58" rx="8" ry="15" fill="url(#dinoGradient)" transform="rotate(15 75 58)"/>
+                    <path d="M 40 20 Q 50 15 60 20 Q 55 25 50 23 Q 45 25 40 20" fill="url(#dinoGradient)"/>
+                    
+                    <!-- Cohete -->
+                    <g transform="translate(20, 25) scale(0.8)">
+                        <ellipse cx="15" cy="25" rx="4" ry="12" fill="url(#rocketGradient)"/>
+                        <path d="M 15 10 L 11 15 L 19 15 Z" fill="#fbbf24"/>
+                        <circle cx="15" cy="20" r="3" fill="#60a5fa" opacity="0.8"/>
+                        <circle cx="15" cy="20" r="2" fill="#dbeafe"/>
+                        <path d="M 11 35 Q 15 40 19 35 Q 15 38 11 35" fill="#f97316" opacity="0.9"/>
+                        <path d="M 13 37 Q 15 40 17 37 Q 15 39 13 37" fill="#fbbf24" opacity="0.8"/>
+                    </g>
+                    
+                    <!-- Detalles finales -->
+                    <circle cx="35" cy="38" r="3" fill="#fca5a5" opacity="0.6"/>
+                    <circle cx="65" cy="38" r="3" fill="#fca5a5" opacity="0.6"/>
+                    <path d="M 45 47 Q 50 52 55 47" stroke="#1f2937" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            
+            <h1 class="header-title">{{headerTitle}}</h1>
+            <p class="header-subtitle">{{headerSubtitle}}</p>
+        </div>
+        
+        <!-- Contenido principal -->
+        <div class="content">
+            {{content}}
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p class="brand">🦕 LanzaWebAR - Hosting & Desarrollo Web</p>
+            <p>Tu partner tecnológico de confianza</p>
+            <p style="font-size: 12px; margin-top: 20px;">
+                Este email fue enviado desde nuestro sistema automatizado.<br>
+                Si tienes preguntas, contáctanos en <a href="mailto:{{contactEmail}}" style="color: #22c55e;">{{contactEmail}}</a>
+            </p>
+        </div>
+    </div>
+    
+    <!--[if mso | IE]>
+            </td>
+        </tr>
+    </table>
+    <![endif]-->
+</body>
+</html>
