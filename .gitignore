@@ -123,3 +123,16 @@ credentials.json
 test-*.js
 test-*.cjs
 *.test.tmp
+
+# Archivos de backup y temporales (¡NUNCA deben subirse!)
+*.backup
+*.bak
+*.old
+*.orig
+*.tmp
+.env.backup
+.env.bak
+.env.orig
+.env.*backup*
+*backup.env*
+
