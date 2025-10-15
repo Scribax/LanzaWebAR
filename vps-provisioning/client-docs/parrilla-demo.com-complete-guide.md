@@ -16,12 +16,12 @@ Hola **Restaurante La Parrilla**, tu sitio web ha sido creado exitosamente.
 ### Panel de Control (cPanel)
 - **URL:** https://186.64.119.195:2083
 - **Usuario:** parrilla
-- **Contraseña:** Fhk#7cqnwfeE
+- **Contraseña:** REDACTED_DEMO_PASSWORD
 
 ### Acceso FTP
 - **Servidor:** 186.64.119.195
 - **Usuario:** parrilla
-- **Contraseña:** Fhk#7cqnwfeE
+- **Contraseña:** REDACTED_DEMO_PASSWORD
 - **Puerto:** 21 (FTP) o 22 (SFTP)
 
 ### Configuración de Email

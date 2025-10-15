@@ -5,7 +5,7 @@
 
 **Dominio:** parrilla-demo.com
 **Usuario cPanel:** parrilla
-**Contraseña:** Fhk#7cqnwfeE
+**Contraseña:** REDACTED_DEMO_PASSWORD
 **Email:** admin@laparrilla-demo.com
 
 ## Accesos importantes
@@ -13,12 +13,12 @@
 ### Panel de Control (cPanel)
 - **URL:** https://186.64.119.195:2083
 - **Usuario:** parrilla
-- **Contraseña:** Fhk#7cqnwfeE
+- **Contraseña:** REDACTED_DEMO_PASSWORD
 
 ### Acceso FTP
 - **Servidor:** 186.64.119.195
 - **Usuario:** parrilla
-- **Contraseña:** Fhk#7cqnwfeE
+- **Contraseña:** REDACTED_DEMO_PASSWORD
 - **Puerto:** 21 (o 22 para SFTP)
 
 ### DNS Configuration

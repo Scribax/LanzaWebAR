@@ -11,7 +11,7 @@ class HostingAutomationService {
         const whmConfig = {
             baseUrl: 'https://blue106.dnsmisitio.net:2087',
             username: 'lanzawe1',
-            password: 'LY32*-g9bYAb4b'
+            password: 'REDACTED_WHM_PASSWORD'
         };
         this.whmApi = new WHMApiService(whmConfig);
     }

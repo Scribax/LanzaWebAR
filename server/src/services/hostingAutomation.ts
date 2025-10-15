@@ -51,7 +51,7 @@ class HostingAutomationService {
     baseUrl: process.env.WHM_URL || 'https://blue106.dnsmisitio.net:2087',
     username: process.env.WHM_USERNAME || 'lanzawe1',
     accessHash: process.env.WHM_ACCESS_HASH,
-    password: process.env.WHM_PASSWORD || 'LY32*-g9bYAb4b'
+    password: process.env.WHM_PASSWORD || 'REDACTED_WHM_PASSWORD'
   }
 
   // Probar conexión a WHM
